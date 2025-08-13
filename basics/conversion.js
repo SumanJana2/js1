@@ -51,3 +51,60 @@ console.log(typeof st1) */
 ///-------------------------------------------------------------------------
 
 
+////****************************Operations***************************** 
+/*
+let value = 3
+let negvslue = -value
+console.log(negvslue)
+
+console.log(2+2) //add
+console.log(2*2)// multi
+console.log(2**2) //power
+console.log(2-2) //subs
+console.log(2/3) //floor division
+console.log(2%3) //remainder
+*/
+/*let str1 = "hello"
+let str2 ="hello"
+
+let str3 = str1+str2
+console.log(str3) //concatenation
+
+console.log("1" + 2) /// type promotion of 2 to string //
+console.log( 1 + "2") /// type promotion of 1 to string 
+console.log( "1" + 2 + 2) // type promotion of both the two in Strings
+console.log( 1+ 2 +"2") // type promotion of 3(1+2) in String */
+/*
+1️⃣ console.log("1" + 2)
+
+"1" ek string hai, + operator ke saath agar koi ek operand string ho to string concatenation hoti hai.
+
+"1" + 2 → "12"
+✅ Output: "12"
+---
+2️⃣ console.log(1 + "2")
+
+Same logic — ek operand string "2" hai, isliye concatenation hoga.
+
+1 + "2" → "12"
+✅ Output: "12"
+--
+3️⃣ console.log("1" + 2 + 2)
+
+Left se evaluate hota hai:
+
+"1" + 2 → "12" (string ban gaya)
+
+"12" + 2 → "122"
+✅ Output: "122"
+---
+
+4️⃣ console.log(1 + 2 + "2")
+
+Left se evaluate hota hai:
+
+1 + 2 → 3 (yahan dono number hain to numeric addition hoga)
+
+3 + "2" → "32" (ab string concatenation)
+✅ Output: "32"
+ */
