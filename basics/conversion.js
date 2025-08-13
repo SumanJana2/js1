@@ -108,6 +108,7 @@ Left se evaluate hota hai:
 3 + "2" → "32" (ab string concatenation)
 ✅ Output: "32"
  */
+/*
 console.log(+true) //op=> 1///the unary operator act here as typeconversion into number and therefore true=>1
 console.log(+"")//op=> 0 ///the unary operator act as a typeconversion into number here therefore empty => 0
 
@@ -117,5 +118,38 @@ let a = 100
 console.log(a++)//op = 100 //agar ++a hota toh op =101
 console.log(a)//post increment mein value pehele fetch hotey hien phir increment hota hein aand op = 101
 //thast why the 100 is value is fetched first as an ouput ,,now after displaying the value of a will be incremnted by one  
+*/
+//************************** Comparisons***********************/
+//console.log(2 > 1)
+//console.log(2 >= 1)
+//console.log(2 <= 1)
+//console.log(2 < 1)
+//console.log(2 == 1)
+//console.log(2 != 1)
+//console.log("2" > 1) //op--> is true bcoz "2" gets automatically coverted into number for comaprisons 
+//console.log("02" > 1) //op--> is true bocz "02" gets auto converted into number for comparison
+//for such type of conversion make sure that string must be convertible into number 
+//console.log("35fdfdfgdt" > 3)//op -->  false (any comparisons with Nan is false bcoz 
+// covernting that string into number will give us NaN)
+
+/*console.log(null>0)
+console.log(null ==0)
+console.log(null>=0) 
+console.log(null<=0)
+console.log(null !=0)
+console.log(null<0)
+*/
+
+console.log(undefined ==0)
+console.log(undefined !=0) //op--> true bcoz (undefined == null)
+console.log(undefined <0)
+console.log(undefined >0)
+console.log(undefined <=0)
+console.log(undefined >=0)
+
+// === strict comaprison (check the value as well the data type)
+// console.log("2"===2) //op--> because it also check value and dataype both but
+ //  in == scenario it was only checking value therefore i was showing true but in this case is the false
+
 
 
