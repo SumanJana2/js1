@@ -111,7 +111,7 @@ Left se evaluate hota hai:
 console.log(+true) //op=> 1///the unary operator act here as typeconversion into number and therefore true=>1
 console.log(+"")//op=> 0 ///the unary operator act as a typeconversion into number here therefore empty => 0
 
-//console.log(true+) //op=>error
+//console.log(true+) //op=>error kyuki asli format typeconverion ka +true hein naaki true+
 
 let a = 100
 console.log(a++)//op = 100 //agar ++a hota toh op =101
