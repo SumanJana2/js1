@@ -108,3 +108,14 @@ Left se evaluate hota hai:
 3 + "2" → "32" (ab string concatenation)
 ✅ Output: "32"
  */
+console.log(+true) //op=> 1///the unary operator act here as typeconversion into number and therefore true=>1
+console.log(+"")//op=> 0 ///the unary operator act as a typeconversion into number here therefore empty => 0
+
+//console.log(true+) //op=>error
+
+let a = 100
+console.log(a++)//op = 100 //agar ++a hota toh op =101
+console.log(a)//post increment mein value pehele fetch hotey hien phir increment hota hein aand op = 101
+//thast why the 100 is value is fetched first as an ouput ,,now after displaying the value of a will be incremnted by one  
+
+
