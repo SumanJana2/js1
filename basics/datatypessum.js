@@ -61,3 +61,29 @@ number
 number
 boolean*/
 
+//two types of memory
+/*
+stack and heap (primitve data goes to stack and non primitive goes to heap) */
+/*
+const v = "suman"
+let m = v
+console.log(m)//output suman bcoz m got a copy of var v insinde the stack memory 
+m = "jana"//changes is made in the copy of var v 
+
+console.log(m)//output jana bocz m got a new value 
+console.log(v)//output suman bcoz we not changed anything in v variable
+
+let user = {
+    email:"suman",
+    upi:"sumanupi"
+}
+ let user2 = user 
+console.log(user2.email) //op suman bcoz user2 and user are refering to same object 
+user2.email ="sumanhdhdhdhd" //changes is made in object value in heap memory
+console.log(user.email) //op sumanhdhdhdhd bocs object 
+// value of user2 got changed and they both were refreing to same object
+console.log(user2.email)//op sumanhdhdhdhd bocs object 
+// value of user2 got changed and they both were refreing to same object
+*/
+//-------------------------------------------------------------
+
