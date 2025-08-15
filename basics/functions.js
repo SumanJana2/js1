@@ -67,36 +67,46 @@ console.log(loginUserMessage())//op-->sam just logged in
 console.log(loginUserMessage("hitesh"))//op-->hitesh just logged in
 */
 
-
-
-
-
-function calculateCartPrice(val1, val2, ...num1){  
+/*
+function calculateCartPrice(num1){   //...->rest & spread operator
+    return num1}
+console.log(calculateCartPrice(2))//op-->2
+*/
+/*
+function calculateCartPrice(...num1){  //yaha ... matlab hein ki baaki ke jitne bhi value hein usey num1 mein daal do
     return num1
 }
+console.log(calculateCartPrice(200, 400, 500, 2000))//op--->[ 200, 400, 500, 2000 ]
+*/
+/*
+function calculateCartPrice(val1,val2,...num1){   //yaha va1=26,val2=35 and baaki ke jitne value woh sab num1
+    return num1}
+console.log(calculateCartPrice(26,35,16,26,17)) //op-->[ 16, 26, 17 ]
+*/
 
-console.log(calculateCartPrice(200, 400, 500, 2000))
-
+//--------------------------------------------------------------------------------------
 const user = {
     username: "hitesh",
-    prices: 199
+    price: 199
 }
 
 function handleObject(anyobject){
     console.log(`Username is ${anyobject.username} and price is ${anyobject.price}`);
 }
 
-// handleObject(user)
+handleObject(user)//op-->Username is hitesh and price is 199(passing object as an argument)
+//-------------------------------------------------------------------------------------
 handleObject({
     username: "sam",
     price: 399
-})
+})/////op----->Username is sam and price is 399 (same as above only difference is we are directly passing an object)
+//----------------------------------------------------------------------------------------
 
 const myNewArray = [200, 400, 100, 600]
 
-function returnSecondValue(getArray){
+function returnSecondValue(getArray){ //passing array as an argument
     return getArray[1]
 }
 
-// console.log(returnSecondValue(myNewArray));
-console.log(returnSecondValue([200, 400, 500, 1000]));
+console.log(returnSecondValue(myNewArray));//op-->400
+console.log(returnSecondValue([200, 400, 500, 1000]));//op--->400 (same as above only difference is we are passing array directly)
