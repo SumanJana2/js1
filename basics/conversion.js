@@ -153,4 +153,65 @@ console.log(undefined >=0)//false
  //  in == scenario it was only checking value therefore i was showing true but in this case is the false
 
 
+ /*Equality (== and ===)
+
+Value 1 Value 2 == ===
+
+null null true true
+null undefined true false
+null 0 false false
+null false false false
+null "" (empty) false false
+undefined undefined true true
+undefined 0 false false
+undefined false false false
+0 false true false
+0 "" (empty) true false
+false "" (empty) true false
+true 1 true false
+false 0 true false
+
+
+
+---
+
+🔹 Relational (<, >, <=, >=)
+
+Expression Result Reason
+
+null < 0 false null → 0, 0 < 0 is false
+null <= 0 true null → 0, 0 <= 0 is true
+null > 0 false 0 > 0 is false
+undefined < 0 false undefined → NaN, any comparison with NaN is false
+undefined > 0 false NaN > 0 is false
+undefined <= 0 false NaN <= 0 is false
+0 < "" false "" → 0, 0 < 0 false
+0 <= "" true "" → 0, 0 <= 0 true
+false < true true false → 0, true → 1, so 0 < 1
+true > 0 true true → 1, 1 > 0
+"5" < 10 true "5" → 5, 5 < 10
+"abc" < 10 false "abc" → NaN, NaN < 10 false
+
+
+
+---
+
+✅ Big Picture Rules:
+
+1. null == undefined is the only loose equality special case.
+
+
+2. == will coerce types, === will not.
+
+
+3. In numeric comparisons:
+
+null → 0
+
+undefined → NaN (so always false)
+
+true → 1, false → 0
+
+"" → 0, "123" → 123, non-numeric strings → NaN */
+
 
