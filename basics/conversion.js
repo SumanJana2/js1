@@ -131,21 +131,22 @@ console.log(a)//post increment mein value pehele fetch hotey hien phir increment
 //for such type of conversion make sure that string must be convertible into number 
 //console.log("35fdfdfgdt" > 3)//op -->  false (any comparisons with Nan is false bcoz 
 // covernting that string into number will give us NaN)
-
-/*console.log(null>0)
-console.log(null ==0)
-console.log(null>=0) 
-console.log(null<=0)
-console.log(null !=0)
-console.log(null<0)
+/*
+console.log(null>0)//false bcoz null  = 0 when null is converted into string 
+console.log(null ==0)//false bcoz null==undefined
+console.log(null>=0) //true bcoz null = 0 when null converted into string 
+console.log(null<=0) // true bcoz null = 0 when null converted into string
+console.log(null !=0)//true bcoz null = undefined
+console.log(null<0)// false bocz null = 0 when null is converted into string 
 */
-
-console.log(undefined ==0)
+/*
+console.log(undefined ==0) //Nan comparisons with any number is false 
 console.log(undefined !=0) //op--> true bcoz (undefined == null)
-console.log(undefined <0)
-console.log(undefined >0)
-console.log(undefined <=0)
-console.log(undefined >=0)
+console.log(undefined <0)//false
+console.log(undefined >0)//false
+console.log(undefined <=0)//false
+console.log(undefined >=0)//false
+*/
 
 // === strict comaprison (check the value as well the data type)
 // console.log("2"===2) //op--> because it also check value and dataype both but
