@@ -51,34 +51,48 @@ console.log(typeof newArr);///op---->String
 
 
 
-const marvel_heros = ["thor", "Ironman", "spiderman"]
-const dc_heros = ["superman", "flash", "batman"]
+//const marvel_heros = ["thor", "Ironman", "spiderman"]
+//const dc_heros = ["superman", "flash", "batman"]
 
-// marvel_heros.push(dc_heros)
+//marvel_heros.push(dc_heros)//issey kya hoga ki pura dc 
+// heros wala array push hoga marvel waley 
+// mein kuch is tarike se [ 'thor', 'Ironman', 'spiderman', [ 'superman', 'flash', 'batman' ] ]
 
-// console.log(marvel_heros);
-// console.log(marvel_heros[3][1]);
+//console.log(marvel_heros);//op--->[ 'thor', 'Ironman', 'spiderman', [ 'superman', 'flash', 'batman' ] ]
+//console.log(marvel_heros[3][1]);//op-->flash
 
-// const allHeros = marvel_heros.concat(dc_heros)
-// console.log(allHeros);
+//const allHeros = marvel_heros.concat(dc_heros) //iss brakcet mein sirf ek hi value daal saktey hein
+//console.log(allHeros);//op-->[ 'thor', 'Ironman', 'spiderman', 'superman', 'flash', 'batman' ]
 
-const all_new_heros = [...marvel_heros, ...dc_heros]
+//const all_new_heros = [...marvel_heros, ...dc_heros]//... lagane se hum yeh 
+// batate hein ki saarey elements of array ko alag alag treat karo uss wajah se op
+//kuch iss tarah ayega --->  [ 'thor', 'Ironman', 'spiderman', 'superman', 'flash', 'batman' ]
+//iss waley format se hum bahut saarey arrays ko concat akr saktey hein
 
-// console.log(all_new_heros);
+// console.log(all_new_heros);op-->[ 'thor', 'Ironman', 'spiderman', 'superman', 'flash', 'batman' ]
 
-const another_array = [1, 2, 3, [4, 5, 6], 7, [6, 7, [4, 5]]]
+//const another_array = [1, 2, 3, [4, 5, 6], 7, [6, 7, [4, 5]]] //nested array
 
-const real_another_array = another_array.flat(Infinity)
-console.log(real_another_array);
+//const real_another_array = another_array.flat(Infinity) //nested array 
+// to normal array with the help of flat keyword ,,here infinity means
+// kaha tak(to which index tak) flaten karna hein 
+//console.log(real_another_array);
+/*op-->[
+  1, 2, 3, 4, 5,
+  6, 7, 6, 7, 4,
+  5] */
 
 
 
-console.log(Array.isArray("Hitesh"))
-console.log(Array.from("Hitesh"))
-console.log(Array.from({name: "hitesh"})) // interesting
-
+//console.log(Array.isArray("Hitesh"))//op-->false(asking if it array)
+//console.log(Array.from("Hitesh"))//op-->[ 'H', 'i', 't', 'e', 's', 'h' ](string to array)
+//console.log(Array.from({name: "hitesh"}))//op-->[]  interesting
+//  bcoz here hitesh is not convert into array we need to specify either
+//  we have to create a array from keys or values???
+/*
 let score1 = 100
 let score2 = 200
 let score3 = 300
 
-console.log(Array.of(score1, score2, score3));
+console.log(Array.of(score1, score2, score3));//op-->[ 100, 200, 300 ]
+///Note : here score can number,boolean,string or mix*/
