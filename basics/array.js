@@ -1,42 +1,51 @@
-// array
+// array //deep copy(stack mein copy wala scene) //shallow copy(object ka reference wala scene)
 
-const myArr = [0, 1, 2, 3, 4, 5]
-const myHeors = ["shaktiman", "naagraj"]
+//const myArr = [0, 1, 2, 3, 4, 5]///yaha js ka array python ki
+//  list ki tarah diff elements rakh saktey hein aur resizable bhi hein aur 
+// shallow copy(reference wala scene) banata hein
+//const myHeros = ["shaktiman", "naagraj"]//string array
 
-const myArr2 = new Array(1, 2, 3, 4)
-// console.log(myArr[1]);
+//const myArr2 = new Array(1, 2, 3, 4) //object of array
+// console.log(myArr[1]); //1st element in myArr
+//console.log(typeof myArr)//object
+//console.log(typeof myArr2)//object
 
 // Array methods
 
-// myArr.push(6)
+// myArr.push(6)//element 6 get add in the array
 // myArr.push(7)
-// myArr.pop()
+// myArr.pop() // last element remove
 
-// myArr.unshift(9)
-// myArr.shift()
+//myArr.unshift(9)//9 gets added as first element in arr all the elements 
+// get shifted to right and last one gets deleted
+//myArr.shift()//all the elements get shifted to left and first element gets deleted
 
-// console.log(myArr.includes(9));
-// console.log(myArr.indexOf(3));
+// console.log(myArr.includes(9));// array mein 9 hein yaah nhi(true/false)
+//console.log(myArr.indexOf(3)); //index of element 3 ,,and
+//  if element doesnt exist in arr the op will be -1
+/*
+const newArr = myArr.join()//add all the elements into string
 
-// const newArr = myArr.join()
-
-// console.log(myArr);
-// console.log( newArr);
+console.log(myArr);//op--->[0,1,2,3,4,5]
+console.log(typeof myArr)//op--?> object
+console.log(newArr);//op-->"0,1,2,3,4,5"
+console.log(typeof newArr);///op---->String
+*/
 
 
 // slice, splice
 
-console.log("A ", myArr);
+//console.log("A ", myArr);//op--> A [0,1,2,3,4,5]
+//const myn1 = myArr.slice(1, 3)//op-->[ 1, 2 ](1st index se 2nd index tak)
 
-const myn1 = myArr.slice(1, 3)
-
-console.log(myn1);
-console.log("B ", myArr);
+//console.log(myn1);
+//console.log("B ", myArr);//op--> A [0,1,2,3,4,5]
 
 
-const myn2 = myArr.splice(1, 3)
-console.log("C ", myArr);
-console.log(myn2);
+//const myn2 = myArr.splice(1, 3);
+//console.log("C ", myArr);//op-->[0,4,5] (splice mein original
+//  array mein manipulation hota hein baki mein nhi hota)
+//console.log("C",myn2); //op-->[ 1, 2, 3 ](1st index se 3rd index tak)
 
 
 
