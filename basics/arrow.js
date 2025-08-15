@@ -3,17 +3,29 @@ const user = {
     price: 999,
 
     welcomeMessage: function() {
-        console.log(`${this.username} , welcome to website`);
-        console.log(this);
+        console.log(`${this.username} , welcome to website`);//op-->hitesh , welcome to website(yeh kaam kar raha hein because website ko hum inside the scope use kar rahe hein)
+        //console.log(this);//op-->
+        /* {
+            username: 'hitesh',
+            price: 999,
+            welcomeMessage: [Function: welcomeMessage]
+            }
+        */
+    
+    
     }
 
 }
 
-// user.welcomeMessage()
-// user.username = "sam"
-// user.welcomeMessage()
-
-// console.log(this);
+user.welcomeMessage()//op-->hitesh , welcome to website(yeh kaam kar raha hein because 
+// website ko hum inside the scope use kar rahe hein)
+user.username = "sam"//op-->sam , welcome to website(yaaha hum username ko outside the scope change kar
+//  rahe hein,, tab bhi yeh kaam isliye kar raha hein kyuki humne this keyword ka use kiya hein
+// agar nhi kiya hota toh op kuch aisa ata:ReferenceError: username is not defined)
+user.welcomeMessage()
+console.log(this);//op-->{}(bcoz we are excessing the object outisde the scope)
+console.log(this.price)//op-->undefined
+console.log(user.price)//op-->999
 
 // function chai(){
 //     let username = "hitesh"
