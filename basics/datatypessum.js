@@ -50,7 +50,7 @@ console.log(typeof score)
 console.log(typeof isloggedin)
 */
 /*------op----------- 
-function
+function object
 object 
 object
 symbol
