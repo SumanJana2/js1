@@ -87,3 +87,8 @@ console.log(user2.email)//op sumanhdhdhdhd bocs object
 */
 //-------------------------------------------------------------
 
+/*let s ="fnjnfjnfjenfn"
+console.log(typeof s) ///op string
+
+let s1 = new String("ghcdygf")
+console.log(typeof s1) ///yaha bhi hum string bana rahe hein but object ke through */
