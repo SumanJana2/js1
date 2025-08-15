@@ -142,27 +142,34 @@ const users = [
 //console.log(tinderUser.hasOwnProperty('Sammy')) //op -->false because it checks only the key part
 //console.log(tinderUser.hasOwnProperty('id'))//op--- true
 
+
+
+
+//-----------------------------object destructuring ----------------
+// agar mujhe baar baar value access karne ke liye object.key.key....(eg:course.coursename) use nhi karna
+//  hein toh mein yaha object destructuring ka use karunga
 const course = {
     coursename: "js in hindi",
     price: "999",
     courseInstructor: "hitesh"
 }
 
-// course.courseInstructor
+//console.log(course.courseInstructor)//op-->hitesh yaha hum Obj destru. ka use nhi kar raha
+//const {courseInstructor} = course//const {key_name} = object_name
+//console.log(courseInstructor)//op-->hitesh //object de structuring(method1)
+//const {courseInstructor: instructor} = course //const {keyname:variable_name) = object_name
+//console.log(instructor);//op-->hitesh //object de structuring(method2)
 
-const {courseInstructor: instructor} = course
 
-// console.log(courseInstructor);
-console.log(instructor);
-
+//-------------------JSON file structure----------------------
 // {
 //     "name": "hitesh",
-//     "coursename": "js in hindi",
+//     "coursename": "js in hindi", //objects (structure 1)
 //     "price": "free"
 // }
 
 [
     {},
-    {},
+    {}, ///array of objects  //objects (structure 2)
     {}
 ]
