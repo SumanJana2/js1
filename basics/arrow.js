@@ -146,7 +146,7 @@ console.log(addTwo(3, 4))//op-->undefined
 
 //Note: whenever we use scope{} we use return keyword in methods
 
-///-------------
+///-----------------------------------------------------------------------------------------
 const myArray = [2, 5, 3, 7, 8]
 
-myArray.forEach(()=>{})   ///passing arrow function in this function  (we will see)
+//myArray.forEach(()=>{})   ///passing arrow function in this function  (we will see)
