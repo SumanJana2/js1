@@ -1,3 +1,278 @@
+<!-- 1. What is the DOM?
+
+The DOM is a programming interface for web pages.(basically tell us the structure of html document)
+
+It represents the HTML (or XML) document as a tree of objects(eg:head,body,title) that JavaScript can access with the help of it's attributes(eg:'id','class') and manipulate.
+
+Think of it like:
+👉 HTML is the blueprint of a house.
+👉 DOM is the actual 3D model of the house you can walk into, change furniture, paint walls, etc.
+
+----------------------------------------------------------------------------------------------------
+
+2. Structure of the DOM
+
+Every HTML document is turned into a tree structure (called DOM Tree).
+
+Example HTML:
+
+<html>
+  <head>
+    <title>My Page</title>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <p>Welcome to my site</p>
+  </body>
+</html>
+
+DOM Tree (simplified):
+
+Document
+ └── html
+      ├── head
+      │ └── title ("My Page")
+      └── body
+           ├── h1 ("Hello")
+           └── p ("Welcome to my site")
+
+
+---
+
+3. Why DOM is useful?
+
+Because JavaScript can:
+
+Find elements (getElementById, querySelector, etc.)
+
+Change content (element.innerHTML = "New text")
+
+Change styles (element.style.color = "red")
+
+React to events (element.addEventListener("click", ...))
+
+Add/remove elements (createElement, appendChild, etc.)
+
+
+
+---
+
+4. Example in action
+
+HTML:
+
+<h1 id="title">Hello</h1>
+<button onclick="changeText()">Click Me</button>
+
+<script>
+  function changeText() {
+    document.getElementById("title").innerText = "Welcome!";
+  }
+</script>
+
+Flow:
+
+1. The HTML page loads.
+
+
+2. Browser creates the DOM tree.
+
+
+3. JS function changeText() runs when button is clicked.
+
+
+4. It accesses the DOM (getElementById("title")) and updates the content.
+
+
+5. The page instantly changes from "Hello" → "Welcome!".
+
+
+
+
+---
+
+5. Key Point
+
+DOM is not the HTML file itself.
+
+It’s the live in-memory representation of the page that the browser creates.
+
+That’s why when you change DOM with JS, the page updates without reloading.
+
+
+
+---
+
+✅ In short:
+The DOM is the bridge between HTML and JavaScript. It lets JS see and change the webpage dynamically.-->
+
+<!--
+1. HTML file vs DOM
+
+Your HTML file is just text stored on disk (or sent from the server).
+
+When the browser loads it, it parses that text and creates a data structure in memory — that’s the DOM.
+
+This data structure is “live” because it updates immediately if JavaScript (or the browser itself) changes it.
+
+
+
+---
+
+2. Why “in memory”?
+
+Because the browser doesn’t keep re-reading the HTML file every time you click something.
+Instead:
+
+It stores all elements, attributes, and text as objects in RAM.
+
+These objects are what JavaScript interacts with.
+
+
+So when you do:
+
+document.getElementById("title").innerText = "Hello World";
+
+You’re not editing the original HTML file.
+You’re changing the in-memory object for that <h1> node.
+The browser then redraws the page to match the updated object.
+
+
+---
+
+3. Why “live”?
+
+Because the DOM always reflects the current state of the page.
+
+If JavaScript adds a <p> element → it appears in the DOM instantly.
+
+If a user types text into an <input> → that value is reflected in the DOM object for that input.
+
+The DOM changes while the page is running, not just when the HTML is first loaded.
+
+
+
+---
+
+4. Example
+
+HTML file (on disk/server):
+
+<h1 id="title">Welcome</h1>
+
+DOM in memory (inside browser):
+
+Document
+ └── h1#title
+       └── "Welcome"
+
+Now, JS runs:
+
+document.getElementById("title").innerText = "Hello!";
+
+HTML file on disk → still says "Welcome".
+
+DOM in memory → node text changes to "Hello!".
+
+Browser redraws and shows "Hello!" to the user.
+
+
+
+---
+
+✅ In short:
+“Live in-memory representation” means the DOM is a data model of the webpage stored in RAM, which the browser and JavaScript can update instantly while the page is running.
+
+In the DOM, objects represent parts of the web page:
+
+The whole document → document object
+
+HTML tags → element objects
+
+Attributes → properties of those objects
+
+Text → text node objects
+
+Comments → comment nodes
+
+When the browser builds the DOM:
+
+Each HTML element becomes an object.
+
+Attributes become properties of that object.
+
+
+Example:
+
+<p id="para" class="text">Hello</p>
+
+DOM representation:
+
+<p> → HTMLParagraphElement object
+
+id="para" → property element.id
+
+class="text" → property element.className
+
+
+Access with JS:
+
+let el = document.getElementById("para");
+console.log(el.id); // "para"
+console.log(el.className); // "text"
+
+
+---
+
+3. Attributes vs Properties
+
+Important distinction:
+
+Attributes = what’s written in HTML.
+
+Properties = the live values in the DOM object (can change at runtime).
+
+
+Example:
+
+<input type="text" value="Hello">
+
+Attribute: value="Hello" (what’s in HTML)
+
+Property: input.value (what’s currently in DOM)
+
+----------------------------------------
+Attributes = extra information written in HTML tags (id, class, src, etc.)
+
+In the DOM, these attributes become properties of the element object that JavaScript can read/change.
+
+-->
+<!-- dom structure of below code:
+                         window
+                           |
+                        document
+                           |
+                          html
+                    _______|______________
+                    |                    |
+                  head                  body
+            ________|_______              |  
+            |      |        |             |       
+           title   meta  style            div 
+            |       |      |       _______|____________________________________________________      
+            text   attrib.        |           |          |          |                          |
+            node                 h1           h2         para      input                       ul
+                        __________|________   |          |          |                          |
+                        |      |          |  text        text       attributes                 li
+                attributes   text       span  node        node       (type,name,id)         ___|______
+                (id,class)   node      ___|_____                                           |          |
+                                       |        |                                        attribute   text 
+                                     attribute  text                                      (class)    node
+                                     (style)    node   
+                                     
+-->
+<!-- browser ka console mein kiya hein dom manipulation uski screenshot li hein maine pc mein -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
