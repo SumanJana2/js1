@@ -18,10 +18,18 @@
     div.setAttribute("title", "generated title")
     div.style.backgroundColor = "green"
     div.style.padding = "12px"
-    // div.innerText = "Chai aur code"
-    const addText = document.createTextNode("Chai aur code")
-    div.appendChild(addText)
+    //div.innerText = "Chai aur code"
+    /*yeh wala hum 
+    code use nhi kartey bcoz yaha innerText
+    ek baar value fetch karta hein aur 
+    phir update karta hein
+    */
+    //niche waley mein humey yeh nhi karna padhta hein(optimized version)
 
-    document.body.appendChild(div)
+    const addText = document.createTextNode("Chai aur code") //memory mein addText="Chai aur code"
+    div.appendChild(addText)//dive mein addtext ko append ke liye
+
+    document.body.appendChild(div)//display ke liya
 </script>
 </html>
+
