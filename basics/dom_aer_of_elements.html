@@ -1,3 +1,4 @@
+<!--dom manipulation(add(both optimize and non),edit(both opti & non) and remove ) of elments from html file-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,21 +18,30 @@
         li.innerHTML = `${langName}`
         document.querySelector('.language').appendChild(li)
     }
-    addLanguage("python")
+    
+    addLanguage("python") //pura tree traverse ho raha hein har baar //not optimized method
     addLanguage("typescript")
 
+    //optimize tarika element ko add karneka
     function addOptiLanguage(langName){
-        const li = document.createElement('li');
-        li.appendChild(document.createTextNode(langName))
+        const li = document.createElement('li'); //<li></li>
+        li.appendChild(document.createTextNode(langName))//create a textnode and then append
+        //<li>golang</li>
         document.querySelector('.language').appendChild(li)
+        /*<ul class="language">
+        <li>Javascript</li>
+        <li>golang</li>
+        </ul>*/
     }
     addOptiLanguage('golang')
 
     //Edit
     const secondLang = document.querySelector("li:nth-child(2)")
-    console.log(secondLang);
-    //secondLang.innerHTML = "Mojo"
-    const newli = document.createElement('li')
+    //console.log(secondLang);
+    //secondLang.innerHTML = "Mojo" //not an optimize way to edit
+    
+    const newli = document.createElement('li')//optimize way to edit
+    console.log(newli)
     newli.textContent = "Mojo"
     secondLang.replaceWith(newli)
 
@@ -42,7 +52,6 @@
     //remove
     const lastLang = document.querySelector('li:last-child')
     lastLang.remove()
-
 
 </script>
 </html>
