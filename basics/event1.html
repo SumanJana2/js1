@@ -19,11 +19,354 @@
    </div>
 </body>
 <script>
+    //events ek sequential program hein aur sequentially 
+    //run hota hein ,,ek action perfoem kiya toh
+    //uska reaction kya hoga  
+
+    //<img onclick="hii" alt="owl clicked"> yeh wala method optimized nhi hein
+
+    //<img onclick="hii" alt="owl clicked"> yeh wala method ke baad agar humne ---------method1
+    //document.getElementById('owl').onclick = function(){ alert("owl clicked")}
+    //yeh wala function likha toh dusra wala funtion run hoga
+    // pehele wala overwrite ho jayega
+
     // document.getElementById('owl').onclick = function(){
     //     alert("owl clicked")
-    // }
+    // } //event ka example(yeh tarreka bhi optimize nhi hein bcoz isme features kaafi kum hein aur propogation ki bhi problem hein )
+      //multiple features ko bhi hum show nhi kar paatey hein 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//1. Using getElementById.onclick = function() {...}
+//You attach an event handler directly to an element.
+//Limitation: Only one function can be assigned. If you do it again, the previous one is overwritten.
+//<button id="btn">Click</button>
+//<script>
+// const btn = document.getElementById("btn");
+//btn.onclick = () => console.log("First");
+// btn.onclick = () => console.log("Second"); // overwrites the first
+//</scrip>
+//👉 Result: Only "Second" runs.(//multiple features ko bhi hum show nhi kar paatey hein )
 
-     // attachEvent()
+//2. Using <img onclick="..."> or inline attributes
+//This mixes HTML and JavaScript, which is not clean.
+//Harder to maintain when your code grows.
+//Violates separation of concerns (structure = HTML, behavior = JS).
+//Inline handlers run in the global scope(only window ke attribute aur function ko access kar pata hein), which can cause conflicts.
+//<img src="pic.png" onclick="alert('Clicked!')">
+//👉 Works fine for small demos, but messy for real projects.
+
+//3. Using addEventListener('click',function(){},false)
+//Allows attaching multiple handlers to the same event.
+//Keeps JavaScript separate from HTML.
+//Gives more control: you can use options like capture, once, passive.
+//You can also remove listeners with removeEventListener().
+//<button id="btn">Click</button>
+//<script>
+//const btn = document.getElementById("btn");
+//btn.addEventListener("click", () => console.log("First"));
+//btn.addEventListener("click", () => console.log("Second"));
+//</scrip>
+//👉 Result: Both "First" and "Second" run.(Allows attaching multiple handlers to the same event)
+
+//✅ Why addEventListener is preferred
+//More flexible (supports multiple listeners).
+//Cleaner separation of HTML and JS.
+//Modern, standard approach.
+//Supports advanced options like once (run only once), capture (event phase), etc.
+
+//⚡ Quick summary:
+//onclick → only one handler, old style.
+//<tag onclick="..."> → bad practice, mixes HTML & JS.
+//addEventListener → recommended, modern, flexible.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//🔴 Problem with inline handlers (global scope)
+//When you use inline handlers like <button onclick="myFunction()">, the code inside runs in the global scope.
+//That means:
+//It expects functions/variables to exist on the global window object.(only window ke attribute aur function ko access kar pata hein)
+//If there are naming conflicts, your code may break.
+//Example:
+//<!DOCTYPE html>
+//<html>
+//<body>
+//<button onclick="show()">Click Me</button>
+//<script>
+// Global function (required for inline handler)
+//      function show() {       //(yeh show() function global fuction hein means it function of window object)
+// alert("Hello from global show()");
+// }
+// Another script also defines `show`
+//let obj = {  //(yeh show() fucntion is a function of obj object )
+    ///show: function() {
+        // alert("Object's show()");
+// }
+//};
+
+// Later, if someone accidentally redefines global show
+ //   function show() {
+//        alert("Oops, overwritten function!");
+//        }
+//  </scrip>
+//</body>
+//</html>
+//---
+
+//⚡ What happens
+
+//The inline onclick="show()" always looks for a global show function.
+//At first, it works. But later, if someone overwrites show, the behavior changes unexpectedly.
+//This is a conflict because multiple parts of your code are fighting for the same global name.
+//---
+
+//✅ With addEventListener
+//If we use addEventListener, functions don’t need to be global.
+
+//<!DOCTYPE html>
+//<html>
+//<body>
+//  <button id="btn">Click Me</button>
+//<script>
+//const btn = document.getElementById("btn");
+
+// function show() {
+// alert("Safe, no global conflict!");
+// }
+
+// btn.addEventListener("click", show);
+//</scrip>
+//</body>
+//</html>
+
+//👉 Here, show is just a local function in script, not exposed to window.
+//Even if another script defines a show, this button will still work correctly.
+//---
+
+//⚡ In short:
+
+//Inline handlers force you to use globals, which are risky.
+//addEventListener keeps things scoped and safe.
+//*/
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///*<!DOCTYPE html> <html>  
+//<body>  
+// <button onclick="show()">Click Me</button> 
+// <script>  
+//  // Global function (required for inline handler)  
+//  function show() {  
+//  alert("Hello from global show()");  
+// }  
+// Another script also defines `show`  
+// let obj = {  
+// show: function() {  
+// alert("Object's show()");  
+// }  
+// };  
+
+// Later, if someone accidentally redefines global show  
+//function show() {  
+//    alert("Oops, overwritten function!");  
+// }  
+//</scrip> </body>  
+//</html>  
+//Output ??
+//Step 1:
+
+//HTML has:
+//<button onclick="show()">Click Me</button>
+//So, when the button is clicked, the browser will look for a global function named show.
+//---
+//Step 2:
+
+//First function defined:
+//function show() {
+//  alert("Hello from global show()");
+//}
+//So now, window.show points to that function.
+//---
+//Step 3:
+
+//You define an object:
+//let obj = {
+// show: function() {
+// alert("Object's show()");
+// }
+//};
+//This obj.show exists, but the button’s onclick is not linked to it, since inline handlers always look at the global scope (window).
+//---
+//Step 4:
+
+//You redefine show:
+//function show() {
+//  alert("Oops, overwritten function!");
+//}
+
+//This overwrites the previous global show.
+//So now, window.show points to the latest function.
+
+
+//---
+//✅ Final Output
+
+//When you click the button:
+//👉 You’ll see "Oops, overwritten function!" in an alert box.
+//---
+
+//⚡ Key takeaway:
+//Inline handlers depend on the global function name. If any script redefines that name, your event behavior changes — which is why this approach is risky.*/
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//Code:
+
+//<!DOCTYPE html>
+//<html>
+//<body>
+// // <button onclick="show()">Click Me</button>
+//<script>
+     // Global function (required for inline handler)
+//function show() {
+     //alert("Hello from global show()");
+    //}
+
+    // Another script also defines `show`
+    //let obj = {
+        //show: function() {
+        //alert("Object's show()");
+        // }
+    //};
+//</scrip>
+//</body>
+//</html>
+//---
+
+//What happens?
+//1. The <button> has onclick="show()".
+//Inline handler will search for a global function named show.
+
+//2. In your script:
+//function show() {
+//  alert("Hello from global show()");
+//}
+//This creates a global function show and attaches it to window.show.
+
+//3. Then you define:
+
+//let obj = {
+    //show: function() {
+    // alert("Object's show()");
+ //}
+//};
+//This creates a method obj.show, but it is not global.
+//The inline onclick="show()" doesn’t know about it, because it only looks at window.show.
+//---
+
+//✅ Output when clicking the button:
+
+//You will get an alert box with:
+//Hello from global show()
+
+//---
+//⚡ Key difference:
+//obj.show() would only run if you explicitly called it in JavaScript (obj.show();).
+//The inline handler doesn’t “see” it.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+/*
+<!DOCTYPE html>
+<html>  
+<body>  
+  <button onclick="obj.show()">Click Me</button>
+ <script>  
+    // Global function (required for inline handler)  
+    function show() {  
+      alert("Hello from global show()");  
+    }  
+  
+    // Another script also defines `show`  
+    let obj = {  
+      show: function() {  
+        alert("Object's show()");  
+      }  
+    };  
+  </scrip>
+ </body>  
+</html>
+
+<button onclick="obj.show()">Click Me</button>
+Let’s carefully trace this version.
+---
+
+Step 1: Inline handler
+
+When you click the button, the browser executes whatever string is inside onclick="" in the scope of window.
+So it will try to run:
+obj.show();
+
+---
+Step 2: Script contents
+
+function show() {
+  alert("Hello from global show()");
+}
+Defines a global function show (stored in window.show).
+
+
+let obj = {
+  show: function() {
+    alert("Object's show()");
+  }
+};
+Defines an object obj with a method show.
+
+Since obj is declared with let at the top level of a script, it becomes a global variable, but not a property of window.
+
+
+
+---
+
+Step 3: Big gotcha ⚠️
+
+Inline handlers (onclick="...") execute in the context of the global window.
+But let obj = {...} does not put obj on window.
+So, inside the inline handler, obj is actually undefined.
+
+
+---
+
+✅ Result when you click the button
+
+Browser will throw an error:
+Uncaught ReferenceError: obj is not defined
+
+------------------------------
+How to fix it?
+
+--If you want inline handler to find obj, you must explicitly attach it to window:
+
+window.obj = {
+  show: function() {
+    alert("Object's show()");
+  }
+};
+
+Now, clicking the button will show:
+Object's show()
+
+---
+
+👉 So the hidden lesson here is:
+
+Inline handlers only see globals attached to window.
+var declarations and functions automatically attach to window.
+
+let and const do not.
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// attachEvent()
     // jQuery - on
 
     // type, timestamp, defaultPrevented
