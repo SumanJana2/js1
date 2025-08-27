@@ -1,2 +1,2 @@
 # js1
-jsut a demo
+javascript notes (normal notes + react notes) only screenshots of lectures
